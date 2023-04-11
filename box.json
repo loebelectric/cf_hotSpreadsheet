@@ -1,0 +1,19 @@
+{
+    "name":"cf_hotSpreadsheet",
+    "version":"0.2.1",
+    "author":"Jeff Stevens",
+    "slug":"cf_hotSpreadsheet",
+    "type":"modules",
+    "keywords":[
+        "handsontable",
+        "hot",
+        "spreadsheet"
+    ],
+    "dependencies": {
+        "spreadsheet-cfml": "^3.8.1"
+    },
+    "installPaths": {
+        "cf_hotSpreadsheet": "modules",
+        "spreadsheet-cfml": "modules"
+    }
+}
