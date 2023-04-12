@@ -99,7 +99,7 @@
                     {
 						//On a success, send an alert
                         console.log("Successful save of handsontable spreadsheet");
-                        alert("Table save successfully -- check your database table to verify!")
+                        alert("Table saved successfully -- check your database table to verify!")
                     }
                     else
                     {

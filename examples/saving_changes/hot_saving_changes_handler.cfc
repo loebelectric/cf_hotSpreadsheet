@@ -33,7 +33,7 @@ component
         }
         catch(any e)
         {
-            return {    "success"       : false
+            return {    "success"       : false,
                         "errorMessage"  : e.message,
                         "errorDetail"   : e.detail  };
         }

@@ -1,6 +1,6 @@
 {
     "name":"cf_hotSpreadsheet",
-    "version":"0.2.1",
+    "version":"0.2.4",
     "author":"Jeff Stevens",
     "slug":"cf_hotSpreadsheet",
     "type":"modules",
@@ -9,11 +9,9 @@
         "hot",
         "spreadsheet"
     ],
-    "dependencies": {
-        "spreadsheet-cfml": "^3.8.1"
+    "dependencies":{
     },
-    "installPaths": {
-        "cf_hotSpreadsheet": "modules",
-        "spreadsheet-cfml": "modules"
+    "installPaths":{
+        "cf_hotSpreadsheet":"modules"
     }
 }

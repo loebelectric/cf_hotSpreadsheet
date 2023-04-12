@@ -78,13 +78,81 @@ Printed to your webpage, you should get an array of arrays object that looks lik
 The following is a fully documented list of methods available for you to use within the cf_hotSpreadsheet module.
 
 ### saveTable()
-This will be the function that you will use to update your SQL database tables using arrays of arrays that come from handsontable's getData() function.
+Saves an array of arrays to SQL Server by executing update and insert statements on a
+a table so that it matches the array of arrays. Intended to be used to save handsontable
+spreadsheets to the database. In order to work, the table that you are updating must
+have a primary key/unique column to target individual rows with update statements.
+
+Parameters:
+
+@tableName The name of the table in the SQL database that you wish to update with the data from a handsontable instance.
+@data An array of arrays representing data from a handsontable spreadsheet instance.
+@columnsToUpdate A struct that describes the relationship between the columns in the data argument and the respective tables in the database that you would like them to update. If empty, no columns will be updated.
+To update all columns, pass in a struct containing keys of all of the columns in the data argument
+paired with values that match columns in the SQL Server table you would like to update.
+@primaryKeyColumn A struct with a single key-value pair that describes the relationship between the column in the
+data argument with the column in the SQL database that hold information about the primary keys.
+@columnHeaders An array containing the names of the columns of the passed-in handsontable spreadsheet data in order.
+If empty, we assume that the first array in the in data array of arrays argument contains the column headers. Default is an empty array.
+@skipRows The number of rows from the top of the table to omit updating. Default is 0.
+
+@return Void
+
+This will be the function that you will use to update your SQL database tables using arrays of arrays that come from handsontable's getData() function. Based upon the input data, this function builds a series of UPDATE and INSERT queries which then get executed on the database. It does create and execute DELETE queries, so row deletions are currently not handled with saveTable().
+
 
 ### convertQueryToArrayOfArrays()
+Converts a query object into an array of arrays, where each row in the query
+object, starting with the column headers, becomes an array that is pushed to
+a containing array.
+
+For example, a query object that look like this:
+row      name        job     lightsaber
+1        Luke        Jedi    Blue
+2        Vader       Sith    Red
+3        Mace        Jedi    Purple
+
+Will be converted to an array of arrays like this:
+[[name, job, lightsaber],
+[Luke, Jedi, Blue],
+[Vader, Sith, Red],
+[Mace, Jedi, Purple]]
+
+
+Parameters:
+
+@q The query object you want to convert to an array of arrays.
+@includeColumnHeadersInData A boolean indicating whether or not to include the headers of columns as the first array
+
+@return The array of arrays that represents the converted query object.
+
 If you have a query object representing a table in your database that you would like to display in a handsontable spreadsheet, then you can use this function to convert it to an array of arrays -- the format which handsontable understands.
 
 ### convertQueryToArrayOfStructures()
-Handsontable also understands arrays of structures when loading data, so you can also use this method for the same purposes as `convertQueryToArrayOfArrays()`.
+Converts a coldfusion query object to an array of structures, where each row of the
+coldfusion query object becomes a structure pushed to an array in the order which
+it appears in in the query.
+
+For example, a query object that look like this:
+row      name        job     lightsaber
+1        Luke        Jedi    Blue
+2        Vader       Sith    Red
+3        Mace        Jedi    Purple
+
+Will be converted to an array of arrays like this:
+[{"name" : "Luke", "job" : "Jedi", "lightsaber" : "Blue"},
+{"name" : "Vader", "job" : "Sith", "lightsaber" : "Red"},
+{"name" : "Mace", "job" : "Jedi", "lightsaber" : "Purple"}]
+
+
+Parameters:
+
+@q The query object you want to convert to an array of structures.
+@includeColumnHeadersInData A boolean indicating whether or not to include the headers of columns as the first structure
+
+@return The array of structures that represents the converted query object.
+
+Handsontable also understands arrays of structures when loading data, so you can also use this method for preparing a query object to be viewed in handsontable.
 
 
 ## Examples

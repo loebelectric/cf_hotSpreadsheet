@@ -489,10 +489,10 @@ component
 
 
     /**
-     * Converts a coldfusion query object to an array of structures, where each row of the 
+     * Converts a coldfusion query object to an array of structures, where each row of the
      * coldfusion query object becomes a structure pushed to an array in the order which
      * it appears in in the query.
-     * 
+     *
      * For example, a query object that look like this:
      * row      name        job     lightsaber
      * 1        Luke        Jedi    Blue
@@ -504,10 +504,10 @@ component
      *  {"name" : "Vader", "job" : "Sith", "lightsaber" : "Red"},
      *  {"name" : "Mace", "job" : "Jedi", "lightsaber" : "Purple"},
      *  ]
-     * 
+     *
      * @q The query object you want to convert to an array of structures.
      * @includeColumnHeadersInData A boolean indicating whether or not to include the headers of columns as the first structure
-     * 
+     *
      * @return The array of structures that represents the converted query object.
      */
     array function convertQueryToArrayOfStructures(query q, boolean includeColumnHeadersInData = true)
