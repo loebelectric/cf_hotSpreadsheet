@@ -86,17 +86,19 @@ have a primary key/unique column to target individual rows with update statement
 Parameters:
 
 @tableName The name of the table in the SQL database that you wish to update with the data from a handsontable instance.
+
 @data An array of arrays representing data from a handsontable spreadsheet instance.
-@columnsToUpdate A struct that describes the relationship between the columns in the data argument and the respective tables in the database that you would like them to update. If empty, no columns will be updated.
-To update all columns, pass in a struct containing keys of all of the columns in the data argument
-paired with values that match columns in the SQL Server table you would like to update.
-@primaryKeyColumn A struct with a single key-value pair that describes the relationship between the column in the
-data argument with the column in the SQL database that hold information about the primary keys.
-@columnHeaders An array containing the names of the columns of the passed-in handsontable spreadsheet data in order.
-If empty, we assume that the first array in the in data array of arrays argument contains the column headers. Default is an empty array.
+
+@columnsToUpdate A struct that describes the relationship between the columns in the data argument and the respective tables in the database that you would like them to update. If empty, no columns will be updated. To update all columns, pass in a struct containing keys of all of the columns in the data argument paired with values that match columns in the SQL Server table you would like to update.
+
+@primaryKeyColumn A struct with a single key-value pair that describes the relationship between the column in the data argument with the column in the SQL database that hold information about the primary keys.
+
+@columnHeaders An array containing the names of the columns of the passed-in handsontable spreadsheet data in order. If empty, we assume that the first array in the in data array of arrays argument contains the column headers. Default is an empty array.
+
 @skipRows The number of rows from the top of the table to omit updating. Default is 0.
 
 @return Void
+
 
 This will be the function that you will use to update your SQL database tables using arrays of arrays that come from handsontable's getData() function. Based upon the input data, this function builds a series of UPDATE and INSERT queries which then get executed on the database. It does create and execute DELETE queries, so row deletions are currently not handled with saveTable().
 
