@@ -84,7 +84,7 @@ spreadsheets to the database. In order to work, the table that you are updating 
 have a primary key/unique column to target individual rows with update statements.
 
 Parameters:
-
+```
 @tableName The name of the table in the SQL database that you wish to update with the data from a handsontable instance.
 
 @data An array of arrays representing data from a handsontable spreadsheet instance.
@@ -98,7 +98,7 @@ Parameters:
 @skipRows The number of rows from the top of the table to omit updating. Default is 0.
 
 @return Void
-
+```
 
 This will be the function that you will use to update your SQL database tables using arrays of arrays that come from handsontable's getData() function. Based upon the input data, this function builds a series of UPDATE and INSERT queries which then get executed on the database. It does create and execute DELETE queries, so row deletions are currently not handled with saveTable().
 
@@ -122,12 +122,12 @@ Will be converted to an array of arrays like this:
 
 
 Parameters:
-
+```
 @q The query object you want to convert to an array of arrays.
 @includeColumnHeadersInData A boolean indicating whether or not to include the headers of columns as the first array
 
 @return The array of arrays that represents the converted query object.
-
+```
 If you have a query object representing a table in your database that you would like to display in a handsontable spreadsheet, then you can use this function to convert it to an array of arrays -- the format which handsontable understands.
 
 ### convertQueryToArrayOfStructures()
@@ -148,12 +148,12 @@ Will be converted to an array of arrays like this:
 
 
 Parameters:
-
+```
 @q The query object you want to convert to an array of structures.
 @includeColumnHeadersInData A boolean indicating whether or not to include the headers of columns as the first structure
 
 @return The array of structures that represents the converted query object.
-
+```
 Handsontable also understands arrays of structures when loading data, so you can also use this method for preparing a query object to be viewed in handsontable.
 
 
